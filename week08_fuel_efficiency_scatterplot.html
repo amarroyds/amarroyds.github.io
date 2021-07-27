@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<script src='https://d3js.org/d3.v5.min.js'></script>
+<style> circle {fill: lightblue; stroke: black;} </style>
+<body onload='init()'>
+<svg width=300 height=300>
+</svg>
+<script>
+
+async function init() {
+
+ const data = await d3.csv(
+  'https://flunky.github.io/cars2017.csv');
+ //console.log(data);
+
+ var margin = 50;
+
+ //use log scale for both x & y -axis
+ //var x = d3.scaleLog().domain(data.AverageCityMPG).range([0,200]);
+ //var y = d3.scaleLog().domain(data.AverageHighwayMPG).range([200,0]);
+ 
+ //default base for scale log = 10?
+ var x = d3.scaleLog().domain([10,150]).range([0,200]);
+ var y = d3.scaleLog().domain([10,150]).range([200,0]);
+ var r = function(i) {return i+2;}
+
+
+ d3.select('svg')
+  .append("g")
+   .attr("transform","translate("+margin+","+margin+")")
+   .selectAll('circle')
+   .data(data)
+   .enter()
+    .append('circle')
+      .attr('cx', function (d,i) { return x(d.AverageCityMPG); })
+      .attr('cy', function (d,i) { return y(d.AverageHighwayMPG); })
+      .attr('r', function (d,i) { return (+d.EngineCylinders)+2; })
+      .style("fill", "lightblue");
+
+ d3.select('svg')
+ .append("g")
+  .attr("transform","translate("+margin+","+margin+")")
+  .call(d3.axisLeft(y).tickValues([10,20,50,100]).tickFormat(d3.format("~s")));
+
+
+ d3.select('svg')
+ .append("g")
+  .attr("transform","translate("+margin+","+(200+margin)+")")
+  .call(d3.axisBottom(x).tickValues([10,20,50,100]).tickFormat(d3.format("~s")));
+
+   
+}
+
+</script>
+</body>
+</html>
