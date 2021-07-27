@@ -18,8 +18,8 @@ async function init() {
  //use log scale for both x & y -axis
 
  //default base for scale log = 10?
- var x = d3.scaleLog().domain([350000,500000]).range([0,200]);
- var y = d3.scaleLog().domain([500000,700000]).range([200,0]);
+ var x = d3.scaleLinear().domain([350000,500000]).range([0,200]);
+ var y = d3.scaleLinear().domain([500000,700000]).range([200,0]);
  //var r = function(i) {return i+2;}
 
 
