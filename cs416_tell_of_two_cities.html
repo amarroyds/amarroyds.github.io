@@ -3,7 +3,7 @@
 <script src='https://d3js.org/d3.v5.min.js'></script>
 <style> circle {fill: lightblue; stroke: black;} </style>
 <body onload='init()'>
-<svg width=300 height=300>
+<svg width=400 height=400>
 </svg>
 <script>
 
@@ -18,8 +18,8 @@ async function init() {
  //use log scale for both x & y -axis
 
  //default base for scale log = 10?
- var x = d3.scaleLinear().domain([350000,500000]).range([0,200]);
- var y = d3.scaleLinear().domain([500000,700000]).range([200,0]);
+ var x = d3.scaleLinear().domain([350000,500000]).range([0,300]);
+ var y = d3.scaleLinear().domain([500000,700000]).range([300,0]);
  //var r = function(i) {return i+2;}
 
 
