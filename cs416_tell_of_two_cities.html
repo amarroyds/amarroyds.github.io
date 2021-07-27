@@ -39,14 +39,14 @@ async function init() {
  .append("g")
   .attr("transform","translate("+margin+","+margin+")")
   .call(d3.axisLeft(y));
-  //.call(d3.axisLeft(y).tickValues([10,20,50,100]).tickFormat(d3.format("~s")));
+  //.call(d3.axisLeft(y).tickValues([500000,600000,700000]).tickFormat(d3.format("~s")));
 
 
  d3.select('svg')
  .append("g")
   .attr("transform","translate("+margin+","+(200+margin)+")")
-  .call(d3.axisBottom(x));
-  //.call(d3.axisBottom(x).tickValues([10,20,50,100]).tickFormat(d3.format("~s")));
+  //.call(d3.axisBottom(x));
+  .call(d3.axisBottom(x).tickValues([350000,400000,450000,500000]).tickFormat(d3.format("~s")));
 
 
    
