@@ -38,8 +38,8 @@ async function init() {
  d3.select('svg')
  .append("g")
   .attr("transform","translate("+margin+","+margin+")")
-  .call(d3.axisLeft(y));
-  //.call(d3.axisLeft(y).tickValues([500000,600000,700000]).tickFormat(d3.format("~s")));
+  //.call(d3.axisLeft(y));
+  .call(d3.axisLeft(y).tickValues([500000,600000,700000]).tickFormat(d3.format("~s")));
 
 
  d3.select('svg')
