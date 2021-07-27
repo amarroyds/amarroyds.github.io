@@ -32,7 +32,7 @@ async function init() {
     .append('circle')
       .attr('cx', function (d,i) { return x(d.NY_list); })
       .attr('cy', function (d,i) { return y(d.NY_Sale); })
-      .attr('r', 3)
+      .attr('r', 5)
       .style("fill", "green");
 
  d3.select('svg')
