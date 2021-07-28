@@ -45,7 +45,7 @@ async function init() {
 
  d3.select('svg')
  .append("g")
-  .attr("transform","translate("+margin+","+(600+margin)+")")
+  .attr("transform","translate("+margin+","+(500+margin)+")")
   //.call(d3.axisBottom(x));
   .call(d3.axisBottom(x).tickValues([0,20,40,60,80]).tickFormat(d3.format("~s")));
 
