@@ -34,7 +34,7 @@ async function init() {
     .append('circle')
       .attr('cx', function (d,i) { return x(d.conversion_pct); })
       .attr('cy', function (d,i) { return y(d.Avg); })
-      .attr('r', function(d,i) {return r(d.Hundred);})
+      .attr('r', function(d,i) {(+d.Hundred)/5;})
 	  //.attr('r', 5)
       .style("fill", function(d,i) {return c(d.Runs);});
 
