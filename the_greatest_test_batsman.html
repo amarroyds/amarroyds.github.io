@@ -10,7 +10,7 @@
 async function init() {
 
  const data = await d3.csv(
-  'https://amarroyds.github.io/NYC_SF_Housing_Mkt.csv');
+  'https://amarroyds.github.io/ICC_Test_Batting_Figures.csv');
  //console.log(data);
 
  var margin = 50;
@@ -18,8 +18,8 @@ async function init() {
  //use log scale for both x & y -axis
 
  //default base for scale log = 10?
- var x = d3.scaleLinear().domain([350000,500000]).range([0,300]);
- var y = d3.scaleLinear().domain([500000,700000]).range([300,0]);
+ var x = d3.scaleLinear().domain([20,80]).range([0,300]);
+ var y = d3.scaleLinear().domain([30,100]).range([300,0]);
  //var r = function(i) {return i+2;}
 
 
@@ -30,8 +30,8 @@ async function init() {
    .data(data)
    .enter()
     .append('circle')
-      .attr('cx', function (d,i) { return x(d.NY_list); })
-      .attr('cy', function (d,i) { return y(d.NY_Sale); })
+      .attr('cx', function (d,i) { return x(d.conversion_pct); })
+      .attr('cy', function (d,i) { return y(d.Avg); })
       .attr('r', 5)
       .style("fill", "green");
 
@@ -39,14 +39,14 @@ async function init() {
  .append("g")
   .attr("transform","translate("+margin+","+margin+")")
   //.call(d3.axisLeft(y));
-  .call(d3.axisLeft(y).tickValues([500000,600000,700000]).tickFormat(d3.format("~s")));
+  .call(d3.axisLeft(y).tickValues([25,50,75,100]).tickFormat(d3.format("~s")));
 
 
  d3.select('svg')
  .append("g")
   .attr("transform","translate("+margin+","+(300+margin)+")")
   //.call(d3.axisBottom(x));
-  .call(d3.axisBottom(x).tickValues([350000,400000,450000,500000]).tickFormat(d3.format("~s")));
+  .call(d3.axisBottom(x).tickValues([20,40,60,80]).tickFormat(d3.format("~s")));
 
 
    
