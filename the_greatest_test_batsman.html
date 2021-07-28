@@ -18,8 +18,8 @@ async function init() {
  //use log scale for both x & y -axis
 
  //default base for scale log = 10?
- var x = d3.scaleLinear().domain([0,100]).range([0,300]);
- var y = d3.scaleLinear().domain([0,100]).range([300,0]);
+ var x = d3.scaleLinear().domain([0,80]).range([0,300]);
+ var y = d3.scaleLinear().domain([25,105]).range([300,0]);
  //var r = function(i) {return i+2;}
 
 
@@ -39,14 +39,14 @@ async function init() {
  .append("g")
   .attr("transform","translate("+margin+","+margin+")")
   //.call(d3.axisLeft(y));
-  .call(d3.axisLeft(y).tickValues([0,25,50,75,100]).tickFormat(d3.format("~s")));
+  .call(d3.axisLeft(y).tickValues([25,50,75,100]).tickFormat(d3.format("~s")));
 
 
  d3.select('svg')
  .append("g")
   .attr("transform","translate("+margin+","+(300+margin)+")")
   //.call(d3.axisBottom(x));
-  .call(d3.axisBottom(x).tickValues([0,20,40,60,80,100]).tickFormat(d3.format("~s")));
+  .call(d3.axisBottom(x).tickValues([0,20,40,60,80]).tickFormat(d3.format("~s")));
 
 
    
