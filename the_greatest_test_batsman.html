@@ -22,7 +22,7 @@ async function init() {
  var x = d3.scaleLinear().domain([0,80]).range([0,860]);
  var y = d3.scaleLinear().domain([25,105]).range([500,0]);
  var c = d3.scaleLinear().domain([4794,15921]).range(["white","green"]);
- //var r = function(i) {return i+2;}
+ var r = d3.scaleLinear().domain([4,51]).range([5,10]);
 
 
  d3.select('svg')
@@ -34,7 +34,7 @@ async function init() {
     .append('circle')
       .attr('cx', function (d,i) { return x(d.conversion_pct); })
       .attr('cy', function (d,i) { return y(d.Avg); })
-      .attr('r', 5)
+      .attr('r', function(d,i) {return r(d);})
       .style("fill", function(d,i) {return c(d);});
 
  d3.select('svg')
