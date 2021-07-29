@@ -145,7 +145,7 @@ async function byAvgRunsHundreds() {
    .enter()
     .append('circle')
       .attr('cx', function (d,i) { return x(d.Hundred); })
-      .attr('cy', function (d,i) { return y(d.Runs); })
+      .attr('cy', function (d,i) { return y(d.Avg);})
       //.attr('r', function(d,i) {return r(d.Hundred);})
 	  .attr('r', 5)
 	  .style("fill", function(d,i) {return c(d.Runs);});
