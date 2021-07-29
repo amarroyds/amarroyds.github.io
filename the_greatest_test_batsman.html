@@ -36,7 +36,8 @@ async function init() {
  var c = d3.scaleLinear().domain([4794,15921]).range(["white","green"]);
  var r = d3.scaleLinear().domain([4,51]).range([2,20]);
 
-
+ d3.selectAll("svg > *").remove();
+ 
  d3.select('svg')
   .append("g")
    .attr("transform","translate("+margin+","+margin+")")
