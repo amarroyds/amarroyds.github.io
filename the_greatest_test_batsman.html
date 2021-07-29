@@ -85,7 +85,8 @@ async function byRunsHundreds() {
  var x = d3.scaleLinear().domain([4,51]).range([0,860]);
  var y = d3.scaleLinear().domain([4794,15921]).range([500,0]);
 
-
+ d3.select("svg").selectAll("*").remove();
+ 
  d3.select('svg')
   .append("g")
    .attr("transform","translate("+margin+","+margin+")")
