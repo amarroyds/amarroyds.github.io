@@ -62,16 +62,14 @@ async function byRun() {
           .padding(0.1);
 
 	var x = d3.scaleLinear()
-          .range([0, width]);
+           .range([0, width]);
           
 	// append the svg object to the body of the page
 	// append a 'group' element to 'svg'
 	// moves the 'group' element to the top left margin
-	var svg = d3.select("body").append("svg")
-		.attr("width", width + margin.left + margin.right)
-		.attr("height", height + margin.top + margin.bottom)
-	.append("g")
-    .attr("transform", 
+	var svg = d3.select('svg')
+		.append("g")
+		.attr("transform", 
           "translate(" + margin.left + "," + margin.top + ")");
 
 	// format the data
@@ -87,12 +85,13 @@ async function byRun() {
     // append the rectangles for the bar chart
     svg.selectAll(".bar")
       .data(data)
-    .enter().append("rect")
-      .attr("class", "bar")
-      //.attr("x", function(d) { return x(d.sales); })
-      .attr("width", function(d) {return x(d.Runs); } )
-      .attr("y", function(d) { return y(d.Player); })
-      .attr("height", y.bandwidth());
+      .enter().append("rect")
+		.attr("class", "bar")
+		//.attr("x", function(d) { return x(d.sales); })
+		.attr("x", 20 })
+		.attr("width", function(d) {return x(d.Runs); } )
+		.attr("y", function(d) { return y(d.Player); })
+		.attr("height", y.bandwidth());
 
   // add the x Axis
   svg.append("g")
