@@ -28,10 +28,10 @@ async function byRun() {
 
  //set up svg using margin conventions - we'll need plenty of room on the left for labels
  var margin = {
- top: 15,
- right: 25,
- bottom: 15,
- left: 60
+	top: 15,
+	right: 25,
+	bottom: 15,
+	left: 60
  };
 
  var width = 960 - margin.left - margin.right,
@@ -50,7 +50,7 @@ async function byRun() {
 	})]);
 
  var y = d3.scale.ordinal()
-	.rangeRoundBands([height, 0], .1)
+	.rangeRoundBands([height, 0], .01)
 	.domain(data.map(function (d) {
 		return d.Player;
 	}));
