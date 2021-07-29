@@ -51,6 +51,15 @@ async function byRun() {
 	'https://amarroyds.github.io/ICC_Test_Batting_Figures.csv');
     //console.log(data);
 	
+	d3.select('body')
+    	.selectAll('p')
+        .data(data)
+        .enter()
+        .append('p')
+        	.html(function(d,i) {return 'Batsman ' +
+            	d.Player + ' scored ' + d.Runs + '.';});
+	
+	/*
 	// set the dimensions and margins of the graph
 	var margin = {top: 20, right: 20, bottom: 30, left: 40},
 		width = 960 - margin.left - margin.right,
@@ -101,7 +110,7 @@ async function byRun() {
   // add the y Axis
   svg.append("g")
       .call(d3.axisLeft(y));
-
+	*/
 }
 
 /*
