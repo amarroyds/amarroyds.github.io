@@ -2,10 +2,21 @@
 <html>
 <script src='https://d3js.org/d3.v5.min.js'></script>
 <style> circle {fill: lightblue; stroke: black;} </style>
+
 <body onload='init()'>
-<h1> Who is the greatest test batsman?</h1>
-<svg width=960 height=600>
-</svg>
+
+<div class="text-things">
+    <h1> Who is the greatest test batsman?</h1>
+    <h2> It depends on the criteria you apply...</h2>    
+</div>
+<div class="buttons">
+    <button onclick="myFunction()">By runs</button>
+    <button onclick="myFunction()">By runs & hundreds scored</button>   
+	<button onclick="myFunction()">By runs & hundreds scored</button> 
+	<button onclick="myFunction()">By runs & hundreds scored</button> 
+</div>
+<svg width=960 height=600></svg>
+
 <script>
 
 async function init() {
