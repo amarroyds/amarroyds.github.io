@@ -75,12 +75,12 @@ async function byRun() {
         bars.append("rect")
             .attr("class", "bar")
             .attr("y", function (d) {
-                return y(d.name);
+                return y(d.Player);
             })
             .attr("height", y.rangeBand())
             .attr("x", 0)
             .attr("width", function (d) {
-                return x(d.value);
+                return x(d.Runs);
             });
 
         //add a value label to the right of each bar
@@ -88,14 +88,14 @@ async function byRun() {
             .attr("class", "label")
             //y position of the label is halfway down the bar
             .attr("y", function (d) {
-                return y(d.name) + y.rangeBand() / 2 + 4;
+                return y(d.Player) + y.rangeBand() / 2 + 4;
             })
             //x position is 3 pixels to the right of the bar
             .attr("x", function (d) {
-                return x(d.value) + 3;
+                return x(d.Runs) + 3;
             })
             .text(function (d) {
-                return d.value;
+                return d.Runs;
             });
         
 
