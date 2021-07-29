@@ -13,7 +13,7 @@
 <div class="buttons">
     <button onclick="init()">By runs</button>
     <button onclick="byRunsHundreds()">By runs & hundreds scored</button>   
-	<button onclick="myFunction()">By avg, runs & hundreds scored</button> 
+	<button onclick="byAvgRunsHundreds()()">By avg, runs & hundreds scored</button> 
 	<button onclick="myFunction()">By conversion, avg, runs & hundreds scored</button> 
 </div>
 <svg width=960 height=600></svg>
@@ -117,6 +117,55 @@ async function byRunsHundreds() {
    
 }
 
+async function byAvgRunsHundreds() {
+
+ const data = await d3.csv(
+  'https://amarroyds.github.io/ICC_Test_Batting_Figures.csv');
+ //console.log(data);
+
+ var margin = 50;
+
+ //use log scale for both x & y -axis
+
+ //Color of the circle indicates the run scored by a batsman
+ //var x = d3.scaleLinear().domain([0,80]).range([0,860]);
+ //var y = d3.scaleLinear().domain([25,105]).range([500,0]);
+ var c = d3.scaleLinear().domain([4794,15921]).range(["white","green"]);
+ //var r = d3.scaleLinear().domain([4,51]).range([2,20]);
+ var x = d3.scaleLinear().domain([4,51]).range([0,860]);
+ var y = d3.scaleLinear().domain([25,105]).range([500,0]);
+
+ d3.select("svg").selectAll("*").remove();
+ 
+ d3.select('svg')
+  .append("g")
+   .attr("transform","translate("+margin+","+margin+")")
+   .selectAll('circle')
+   .data(data)
+   .enter()
+    .append('circle')
+      .attr('cx', function (d,i) { return x(d.Hundred); })
+      .attr('cy', function (d,i) { return y(d.Runs); })
+      //.attr('r', function(d,i) {return r(d.Hundred);})
+	  .attr('r', 5)
+	  .style("fill", function(d,i) {return c(d.Runs);});
+	  //.style("fill", "green");
+
+ d3.select('svg')
+ .append("g")
+  .attr("transform","translate("+margin+","+margin+")")
+  //.call(d3.axisLeft(y));
+  .call(d3.axisLeft(y).tickValues([25,50,75,100]).tickFormat(d3.format("~s")));
+
+
+ d3.select('svg')
+ .append("g")
+  .attr("transform","translate("+margin+","+(500+margin)+")")
+  //.call(d3.axisBottom(x));
+  .call(d3.axisBottom(x).tickValues([5,15,25,35,45]).tickFormat(d3.format("~s")));
+
+   
+}
 </script>
 </body>
 </html>
