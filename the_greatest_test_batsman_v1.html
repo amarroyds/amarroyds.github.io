@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<script src='https://d3js.org/d3.v5.min.js'></script>
+<style> 
+
+	circle {fill: lightblue; stroke: black;} 
+	body {
+            font-family: "Arial", sans-serif;
+        }
+        
+        .bar {
+            fill: #5f89ad;
+        }
+        
+        .axis {
+            font-size: 13px;
+        }
+        
+        .axis path,
+        .axis line {
+            fill: none;
+            display: none;
+        }
+        
+        .label {
+            font-size: 13px;
+        }
+
+</style>
+
+<!--<body onload='init()'>-->
+<body onload ="byCriteria()">
+
+<div class="text-things">
+    <h1> Who is the greatest test batsman?</h1>
+    <h2> It depends on the criteria you apply...</h2>    
+</div>
+
+<!-- Create a div where the button will reside -->
+<div class="buttons">
+    <button onclick="byRunsHundreds()">By runs & hundreds scored</button>   
+	<button onclick="byAvgRunsHundreds()">By avg, runs & hundreds scored</button> 
+	<button onclick="byAll()">By conversion, avg, runs & hundreds scored</button> 
+</div>
+
+<!-- Create a div where the graph will take place -->
+<div id="my_chart"></div>
+
+<!--<svg width=960 height=600></svg>-->
+
+<script>
+
+async function byCriteria() {
+
+
+ // set the dimensions and margins of the graph
+ var margin = {top: 25, right: 25, bottom: 50, left: 50},
+    width = 960 - margin.left - margin.right,
+    height = 600 - margin.top - margin.bottom;
+
+ //use log scale for both x & y -axis
+
+ //Color of the circle indicates the run scored by a batsman
+ var x = d3.scaleLinear().domain([4794,15921]).range([0,width]);
+ var y = d3.scaleLinear().domain([4,51]).range([height,0]);
+ //var c = d3.scaleLinear().domain([4794,15921]).range(["white","green"]);
+
+
+ //d3.select("svg").selectAll("*").remove();
+ 
+ // append the svg object to the body of the page
+ var svg = d3.select("#my_chart")
+  .append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform",
+          "translate(" + margin.left + "," + margin.top + ")");
+		  
+  const data = await d3.csv(
+  'https://amarroyds.github.io/ICC_Test_Batting_Figures.csv');
+  //console.log(data);
+
+  // List of groups (here I have one group per column)
+  var allGroup = ["byHundredRun", "byHundredRunAvg", "byAll"]
+ 
+
+
+  //svg.append("g")
+  // .attr("transform","translate("+margin.left+","+margin.top+")")
+   
+   
+   // add Y-axis
+   svg.append("g")
+	.call(d3.axisLeft(y).tickValues([5000,7500,10000,12500,15000]).tickFormat(d3.format("~s")));
+   
+   //add X-axis
+   svg.append("g")
+	.attr("transform","translate(0,"+height+")")
+	.call(d3.axisBottom(x).tickValues([5,15,25,35,45]).tickFormat(d3.format("~s")));
+   
+
+   svg.selectAll('circle')
+   .data(data)
+   .enter()
+    .append('circle')
+      .attr('cx', function (d,i) { return x(d.Runs); })
+      .attr('cy', function (d,i) { return y(d.Hundred);})
+      //.attr('r', function(d,i) {return r(d.Hundred);})
+	  .attr('r', 5)
+	  //.style("fill", function(d,i) {return c(d.Runs);});
+	  .style("fill", "green");
+   
+}
+</script>
+</body>
+</html>
