@@ -208,7 +208,7 @@ async function byAll() {
  //Color of the circle indicates the run scored by a batsman
  var x = d3.scaleLinear().domain([4794,15921]).range([0,860]);
  var y = d3.scaleLinear().domain([4,51]).range([500,0]);
- var c = d3.scaleLinear().domain([25,65,105]).range(["red","white","green"]);
+ var c = d3.scaleLinear().domain([25,50,105]).range(["red","white","green"]);
  var r = d3.scaleLinear().domain([0,80]).range([0,30]);
 
  d3.select("svg").selectAll("*").remove();
