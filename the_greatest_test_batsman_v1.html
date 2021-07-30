@@ -92,12 +92,12 @@ async function byCriteria() {
    
    // add Y-axis
    svg.append("g")
-	.call(d3.axisLeft(y).tickValues([5000,7500,10000,12500,15000]).tickFormat(d3.format("~s")));
+	.call(d3.axisLeft(y).tickValues([5,15,25,35,45]).tickFormat(d3.format("~s")));
    
    //add X-axis
    svg.append("g")
 	.attr("transform","translate(0,"+height+")")
-	.call(d3.axisBottom(x).tickValues([5,15,25,35,45]).tickFormat(d3.format("~s")));
+	.call(d3.axisBottom(x).tickValues([5000,7500,10000,12500,15000]).tickFormat(d3.format("~s")));
    
 
    svg.selectAll('circle')
