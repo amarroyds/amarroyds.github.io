@@ -222,9 +222,9 @@ async function byAll() {
     .append('circle')
       .attr('cx', function (d,i) { return x(d.Runs);})
       .attr('cy', function (d,i) { return y(d.Hundred);})
-      //.attr('r', function(d,i) {return r(d.conversion_pct);})
+      .attr('r', function(d,i) {return r(d.conversion_pct);})
       //.style("fill", function(d,i) {return c(d.Avg);});
-	  .attr('r', 5)
+	  //.attr('r', 5)
 	  .style("fill","blue");
 
  d3.select('svg')
