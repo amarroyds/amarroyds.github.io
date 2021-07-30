@@ -231,7 +231,7 @@ async function byAll() {
  .append("g")
   .attr("transform","translate("+margin+","+margin+")")
   //.call(d3.axisLeft(y));
-  .call(d3.axisLeft(y).tickValues([0,10,20,40,50]).tickFormat(d3.format("~s")));
+  .call(d3.axisLeft(y).tickValues([10,20,40,50]).tickFormat(d3.format("~s")));
 
 
  d3.select('svg')
