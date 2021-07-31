@@ -71,11 +71,11 @@ async function byCriteria() {
  var x = d3.scaleLinear().domain([4794,15921]).range([0,width]); //Runs scale
  var y = d3.scaleLinear().domain([4,51]).range([height,0]); //hundreds scale
  var c = d3.scaleLinear().domain([25,50,105]).range(["red","white","green"]); //Average scale
- var r = d3.scaleLinear().domain([9,70]).range([5,30]); //Conversion scale
+ var r = d3.scaleLinear().domain([9,70]).range([0,25]); //Conversion scale
 
  var bubbleRadius = function(criteria,d) {
 		if (criteria == "byHundredRun") {
-			return r(20);
+			return r(10);
 		} else { 
 			return r(d);
 		}
