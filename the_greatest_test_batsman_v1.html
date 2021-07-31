@@ -68,7 +68,7 @@ async function byCriteria() {
  var c = d3.scaleLinear().domain([25,50,105]).range(["red","white","green"]); //Average scale
  var r = d3.scaleLinear().domain([0,80]).range([0,30]); //Conversion scale
 
- var radius = function(criteria,d) {
+ var bubbleRadius = function(criteria,d) {
 		if (criteria = "byHundredRun") {
 			return r(20);
 		} else { 
@@ -76,7 +76,7 @@ async function byCriteria() {
 		}
  
     }
-  var color = function(criteria,d) {
+  var bubbleColor = function(criteria,d) {
 		if (criteria = "byAll") {
 			return c(d);
 		} else {
@@ -126,8 +126,8 @@ async function byCriteria() {
     .append('circle')
       .attr('cx', function (d,i) { return x(d.Runs); })
       .attr('cy', function (d,i) { return y(d.Hundred);})
-      .attr('r', function(d,i) {return radius(selectedCriteria,d.Hundred);})
-	  .style("fill", function(d,i) {return color(selectedCriteria,d.Runs);});
+      .attr('r', function(d,i) {return bubbleRadius(selectedCriteria,d.Avg);})
+	  .style("fill", function(d,i) {return bubbleColor(selectedCriteria,d.conversion_pct);});
 
    
    
