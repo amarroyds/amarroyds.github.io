@@ -52,7 +52,9 @@
 
 async function byCriteria() {
 
-
+ //default value of criteria onload(); will asume value on button onclick()
+ var selectedCriteria = "byHundredRun"
+ 
  // set the dimensions and margins of the graph
  var margin = {top: 25, right: 25, bottom: 50, left: 50},
     width = 960 - margin.left - margin.right,
@@ -61,9 +63,27 @@ async function byCriteria() {
  //use log scale for both x & y -axis
 
  //Color of the circle indicates the run scored by a batsman
- var x = d3.scaleLinear().domain([4794,15921]).range([0,width]);
- var y = d3.scaleLinear().domain([4,51]).range([height,0]);
- //var c = d3.scaleLinear().domain([4794,15921]).range(["white","green"]);
+ var x = d3.scaleLinear().domain([4794,15921]).range([0,width]); //Runs scale
+ var y = d3.scaleLinear().domain([4,51]).range([height,0]); //hundreds scale
+ var c = d3.scaleLinear().domain([25,50,105]).range(["red","white","green"]); //Average scale
+ var r = d3.scaleLinear().domain([0,80]).range([0,30]); //Conversion scale
+
+ var radius = function(criteria,d) {
+		if (criteria = "byHundredRun") {
+			return 5;
+		} else { 
+			return r(d);
+		}
+ 
+    }
+  var color = function(criteria,d) {
+		if (criteria = "byAll") {
+			return c(d);
+		} else {
+			return "green";
+		}
+ 
+    }
 
 
  //d3.select("svg").selectAll("*").remove();
@@ -100,17 +120,36 @@ async function byCriteria() {
 	.call(d3.axisBottom(x).tickValues([5000,7500,10000,12500,15000]).tickFormat(d3.format("~s")));
    
 
-   svg.selectAll('circle')
+   var scatter = svg.selectAll('circle')
    .data(data)
    .enter()
     .append('circle')
       .attr('cx', function (d,i) { return x(d.Runs); })
       .attr('cy', function (d,i) { return y(d.Hundred);})
-      //.attr('r', function(d,i) {return r(d.Hundred);})
-	  .attr('r', 5)
-	  //.style("fill", function(d,i) {return c(d.Runs);});
-	  .style("fill", "green");
+      .attr('r', function(d,i) {return radius(selectedCriteria,d.Hundred);})
+	  .style("fill", function(d,i) {return color(selectedCriteria,d.Runs);});
+
    
+   
+   // A function that update the chart
+    function update(selectedCriteria) {
+
+      // Create new data with the selection?
+      //var dataFilter = data.map(function(d){return {time: d.time, value:d[selectedGroup]} })
+
+      // Redraw the circles based on the selected criteria i.e. button values
+      scatter
+          .data(data)
+          .transition()
+          .duration(1000)
+		  .enter()
+			.append('circle')
+			.attr('cx', function (d,i) { return x(d.Runs); })
+			.attr('cy', function (d,i) { return y(d.Hundred);})
+            .attr('r', function(d,i) {return radius(selectedCriteria,d.Hundred);})
+			.style("fill", function(d,i) {return color(selectedCriteria,d.Runs);});
+
+    }
 }
 </script>
 </body>
