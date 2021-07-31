@@ -38,9 +38,14 @@
 
 <!-- Create a div where the button will reside -->
 <div class="buttons">
-    <button onclick="byRunsHundreds()">By runs & hundreds scored</button>   
-	<button onclick="byAvgRunsHundreds()">By avg, runs & hundreds scored</button> 
-	<button onclick="byAll()">By conversion, avg, runs & hundreds scored</button> 
+    <button value = "byHundredRun" onclick="byRunsHundreds()">By runs & hundreds scored</button>   
+	<button value = "byHundredRunAvg" onclick="byAvgRunsHundreds()">By avg, runs & hundreds scored</button> 
+	<button value = "byAll" onclick="byAll()">By conversion, avg, runs & hundreds scored</button> 
+</div>
+
+<!-- Initialize a select button -->
+<div>
+	<select id="selectButton"></select>
 </div>
 
 <!-- Create a div where the graph will take place -->
@@ -103,6 +108,16 @@ async function byCriteria() {
 
   // List of groups (here I have one group per column)
   var allGroup = ["byHundredRun", "byHundredRunAvg", "byAll"]
+  
+  // add the options to the button
+  d3.select("#selectButton")
+    .selectAll('myOptions')
+    .data(allGroup)
+    .enter()
+    .append('option')
+      .text(function (d) { return d; }) // text showed in the menu
+      .attr("value", function (d) { return d; }) // corresponding value returned by the button
+
  
 
 
@@ -150,6 +165,15 @@ async function byCriteria() {
 			.style("fill", function(d,i) {return color(selectedCriteria,d.Runs);});
 
     }
+	
+	// When the button is changed, run the updateChart function
+    d3.select("#selectButton")
+	.on("change", function(d) {
+        // recover the option that has been chosen
+        var selectedOption = d3.select(this).property("value")
+        // run the updateChart function with this selected option
+        update(selectedOption)
+    })
 }
 </script>
 </body>
