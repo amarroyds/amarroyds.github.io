@@ -135,7 +135,7 @@ async function byCriteria() {
 	.call(d3.axisBottom(x).tickValues([5000,7500,10000,12500,15000]).tickFormat(d3.format("~s")));
    
 
-   var scatter = svg.selectAll('circle')
+   svg.selectAll('circle')
    .data(data)
    .enter()
     .append('circle')
