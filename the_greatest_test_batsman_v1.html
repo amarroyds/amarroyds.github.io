@@ -70,7 +70,7 @@ async function byCriteria() {
  //Color of the circle indicates the run scored by a batsman
  var x = d3.scaleLinear().domain([4794,15921]).range([0,width]); //Runs scale
  var y = d3.scaleLinear().domain([4,51]).range([height,0]); //hundreds scale
- var c = d3.scaleLinear().domain([25,50,105]).range(["red","white","green"]); //Average scale
+ var c = d3.scaleLinear().domain([20,60,100]).range(["red","white","green"]); //Average scale
  var r = d3.scaleLinear().domain([9,70]).range([0,25]); //Conversion scale
 
  var bubbleRadius = function(criteria,d) {
