@@ -40,9 +40,11 @@
 <h2> WISDEN RANKING </h2> 
 <script>
 	var columns = [
-		{src:"http://iconbug.com/data/3a/256/77c71e95885bf94c06c7c68ccb63b131.png"}, 
-		{src:"http://iconbug.com/data/3a/256/9f8cd17bf12b1667d6c4b31b889b3034.png"},  
-		{src:"http://iconbug.com/data/b4/256/4ece97792658df143eb693c23bb991f3.png"}
+		{src:"https://amarroyds.github.io/images/Bradman.png"}, 
+		{src:"https://amarroyds.github.io/images/Sachine.png"}, 
+		{src:"https://amarroyds.github.io/images/Richards.png"},
+		{src:"https://amarroyds.github.io/images/Sobers.png"},
+		{src:"https://amarroyds.github.io/images/border.png"},
 	];
 	
 	var ranking = [ "1.Donald Bradman", "2.Sachin Tendulkar","3.Viv Richards","4.Garfield Sobers","5.Allan Border"]
@@ -64,6 +66,13 @@
 	thead.append('tr')
 		.selectAll('th')
 		.data(ranking)
+		.enter()
+        .append("td")
+        .text(function(d) {return d;});
+		
+	thead.append('tr')
+		.selectAll('th')
+		.data(points)
 		.enter()
         .append("td")
         .text(function(d) {return d;});
