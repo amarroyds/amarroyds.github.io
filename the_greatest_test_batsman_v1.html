@@ -30,9 +30,30 @@
 
 <!--<body onload='init()'>-->
 <body onload ="byCriteria()">
+<script>
+	var columns = [
+		{src:"http://iconbug.com/data/3a/256/77c71e95885bf94c06c7c68ccb63b131.png"}, 
+		{src:"http://iconbug.com/data/3a/256/9f8cd17bf12b1667d6c4b31b889b3034.png"}, 
+		{src:"http://iconbug.com/data/b4/256/4ece97792658df143eb693c23bb991f3.png"}
+	];
 
+	var table = d3.select("body").append('table');
+	var thead = table.append('thead');
+
+	thead.append('tr')
+		.selectAll('th')
+		.data(columns)
+		.enter()
+		.append('th')
+		.append('img')
+		.attr('src', function(d) {
+			return d.src;
+		});
+
+</script>
 <div class="text-things">
     <h1> Who is the greatest test batsman?</h1>
+	<p> </p>
     <h2> It depends on the criteria you apply...</h2>    
 </div>
 
