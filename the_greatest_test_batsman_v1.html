@@ -70,9 +70,9 @@ async function byCriteria() {
  //Color of the circle indicates the run scored by a batsman
  var x = d3.scaleLinear().domain([4794,15921]).range([0,width]); //Runs scale
  var y = d3.scaleLinear().domain([4,51]).range([height,0]); //hundreds scale
- //var c = d3.scaleLinear().domain([20,60,100]).range(["red","white","green"]); //Average scale
- var c = d3.scaleSequential().domain([20,100]).interpolator(d3.interpolatePuRd);
- var r = d3.scaleLinear().domain([9,70]).range([0,25]); //Conversion scale
+ //var c = d3.scaleLinear().domain([20,60,100]).range(["red","white","green"]); 
+ var c = d3.scaleSequential().domain([9,70]).interpolator(d3.interpolatePuRd);//Conversion scale - color of the bubble
+ var r = d3.scaleLinear().domain([20,100]).range([0,25]);  //Average scale - radius of the bubble
 
  var bubbleRadius = function(criteria,d) {
 		if (criteria == "byHundredRun") {
@@ -86,7 +86,8 @@ async function byCriteria() {
 		if (criteria == "byAll") {
 			return c(d);
 		} else {
-			return d3.color("lightgreen");
+			//return d3.color("lightgreen");
+			return c(d);
 		}
  
     }
