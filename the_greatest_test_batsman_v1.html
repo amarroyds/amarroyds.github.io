@@ -164,8 +164,8 @@ async function byCriteria() {
           .duration(1000)
 			.attr('cx', function (d,i) { return x(d.Runs); })
 			.attr('cy', function (d,i) { return y(d.Hundred);})
-            .attr('r', function(d,i) {return radius(selectedCriteria,d.Hundred);})
-			.style("fill", function(d,i) {return color(selectedCriteria,d.Runs);});
+            .attr('r', function(d,i) {return bubbleRadius(selectedCriteria,d.Avg);})
+			.style("fill", function(d,i) {return bubbleColor(selectedCriteria,d.conversion_pct);});
 
     }
 	
