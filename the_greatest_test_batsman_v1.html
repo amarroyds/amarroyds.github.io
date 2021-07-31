@@ -33,11 +33,18 @@
 
 <div class="text-things">
     <h1> Who is the greatest test batsman?</h1>
-	<p> </p>
+	<p> In the last 148 years history of Test-cricket the world has seen many great batsman.
+	Over the years, it is been a natural qustiona among the numerous fans and experts alike.
+	Surprisingly, there a not many framework or rating system developed to answer this question.
+	In the year 2002, Wisden Magazine published their firt such 
+	<a href="https://archive.ph/20070110222511/http://www.cricinfo.com/ci/content/story/113623.html">rating</a>.
+	Which later updated. The updated data for top five batsman is available below.
+	(<a href="https://en.wikipedia.org/wiki/Wisden_100#cite_note-8">reference</a>)
+	</p>
     <h2> It depends on the criteria you apply...</h2>    
 </div>
 <div>
-<h2> WISDEN RANKING </h2> 
+<h2> Wisden Ranking </h2> 
 <script>
 	var columns = [
 		{src:"https://amarroyds.github.io/images/Bradman.png"}, 
@@ -47,12 +54,15 @@
 		{src:"https://amarroyds.github.io/images/border.png"},
 	];
 	
-	var ranking = [ "1.<a href="https://www.espncricinfo.com/player/donald-bradman-4188">Donald Bradman</a>", 
-					"2.<a href="http://stats.espncricinfo.com/ci/content/player/35320.html">Sachin Tendulkar</a>",
+	var ranking = [ "1.Donald Bradman", 
+					"2.Sachin Tendulkar",
 					"3.Viv Richards",
 					"4.Garfield Sobers",
 					"5.Allan Border"]
 	var points =["1349.0","1000.5","913.9","912.0","911.2"]
+	
+	/*const data = await d3.csv(
+		'https://amarroyds.github.io/Wisden_ranking.csv');*/
 
 	var table = d3.select("body").append('table');
 	var thead = table.append('thead');
@@ -80,6 +90,7 @@
 		.enter()
         .append("td")
         .text(function(d) {return d;});
+		
 
 </script>
 
