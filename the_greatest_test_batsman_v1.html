@@ -156,6 +156,7 @@ async function byCriteria() {
 
       // Redraw the circles based on the selected criteria i.e. button values
       scatter
+		  .selectAll('circle')
           .data(data)
 		  .enter()
 		  .append('circle')
