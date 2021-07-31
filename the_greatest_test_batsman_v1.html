@@ -155,8 +155,10 @@ async function byCriteria() {
 	  console.log(selectedCriteria);
 
       // Redraw the circles based on the selected criteria i.e. button values
-	  svg.transition()
-       .duration(1000)
+	  svg.selectAll('circle')
+         .data(data)
+		 .transition()
+         .duration(1000)
 			.attr('cx', function (d,i) { return x(d.Runs); })
 			.attr('cy', function (d,i) { return y(d.Hundred);})
             .attr('r', function(d,i) {return bubbleRadius(selectedCriteria,d.Avg);})
