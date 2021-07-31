@@ -40,10 +40,13 @@
 <h2> WISDEN RANKING </h2> 
 <script>
 	var columns = [
-		[{src:"http://iconbug.com/data/3a/256/77c71e95885bf94c06c7c68ccb63b131.png"},{"1000"}], 
-		[{src:"http://iconbug.com/data/3a/256/9f8cd17bf12b1667d6c4b31b889b3034.png"},{"1000"}],   
-		[{src:"http://iconbug.com/data/b4/256/4ece97792658df143eb693c23bb991f3.png"},{"1000"}]
+		{src:"http://iconbug.com/data/3a/256/77c71e95885bf94c06c7c68ccb63b131.png"}, 
+		{src:"http://iconbug.com/data/3a/256/9f8cd17bf12b1667d6c4b31b889b3034.png"},  
+		{src:"http://iconbug.com/data/b4/256/4ece97792658df143eb693c23bb991f3.png"}
 	];
+	
+	var ranking = [ "1.Donald Bradman", "2.Sachin Tendulkar","3.Viv Richards","4.Garfield Sobers","5.Allan Border"]
+	var points =["1349.0","1000.5","913.9","912.0","911.2"]
 
 	var table = d3.select("body").append('table');
 	var thead = table.append('thead');
@@ -57,6 +60,13 @@
 		.attr('src', function(d) {
 			return d.src;
 		});
+		
+	thead.append('tr')
+		.selectAll('th')
+		.data(ranking)
+		.enter()
+        .append("td")
+        .text(function(d) {return d;});
 
 </script>
 
