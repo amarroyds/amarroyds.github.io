@@ -361,17 +361,17 @@ async function byCriteria() {
 	//Add legend for Radius i.e. Avg
 	
 	// Handmade legend
-	svg.append("circle").attr("cx",650).attr("cy",450).attr("r", 25).style("fill", d3.color("plum"))
-	svg.append("circle").attr("cx",695).attr("cy",450).attr("r", 9.3).style("fill", d3.color("plum"))
-	svg.append("circle").attr("cx",718).attr("cy",450).attr("r", 3.1).style("fill", d3.color("plum"))
+	//svg.append("circle").attr("cx",650).attr("cy",450).attr("r", 25).style("fill", d3.color("plum"))
+	//svg.append("circle").attr("cx",695).attr("cy",450).attr("r", 9.3).style("fill", d3.color("plum"))
+	//svg.append("circle").attr("cx",718).attr("cy",450).attr("r", 3.1).style("fill", d3.color("plum"))
 	//svg.append("text").attr("x", 735).attr("y", 300).text("Avg - 100").style("font-size", "15px").attr("alignment-baseline","middle")
 	//svg.append("text").attr("x", 735).attr("y", 345).text("Avg - 50").style("font-size", "15px").attr("alignment-baseline","middle")
 	//svg.append("text").attr("x", 735).attr("y", 368).text("Avg - 30").style("font-size", "15px").attr("alignment-baseline","middle")
 	
-	/*
+	
 	svg.append("g")
 	   .attr("class", "legendSize")
-       .attr("transform", "translate(700, 300)");
+       .attr("transform", "translate(600, 450)");
     
 	var legendSize = d3.legendSize()
 		.scale(r)
@@ -384,7 +384,7 @@ async function byCriteria() {
 
 	svg.select(".legendSize")
 		.call(legendSize);
-    */     
+        
 	
 	
    svg.selectAll('circle')
