@@ -244,7 +244,7 @@ async function byCriteria() {
 	
    // Add a tooltip div. Here I define the general feature of the tooltip: stuff that do not depend on the data point.
    // Its opacity is set to 0: we don't see it by default.
-   var tooltip = d3.select("#my_dataviz")
+   var tooltip = d3.select("#my_chart")
     .append("div")
     .style("opacity", 0)
     .attr("class", "tooltip")
@@ -296,6 +296,29 @@ async function byCriteria() {
         tooltip
           .attr('transform', `translate(${x}, ${y})`);
     */
+	
+	// Add annotations...
+	// Features of the annotation
+	/*const annotations = [
+		{
+			note: {
+			label: "Here is the annotation label",
+			title: "Annotation title"
+		},
+			x: 100,
+			y: 100,
+			dy: 100,
+			dx: 100
+		}
+	]
+
+	// Add annotation to the chart
+	const makeAnnotations = d3.annotation()
+	.annotations(annotations)
+	
+	d3.select("#myChart")
+	.append("g")
+	.call(makeAnnotations)*/
 
    svg.selectAll('circle')
    .data(data)
