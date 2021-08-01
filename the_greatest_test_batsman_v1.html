@@ -143,7 +143,8 @@
 <!-- Load d3-annotation & legend; Credit: www.susielu.com-->
 <script src="https://rawgit.com/susielu/d3-annotation/master/d3-annotation.min.js"></script>
 <script src="https://cdnjs.com/libraries/d3-legend"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/d3-legend/1.1.0/d3-legend.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.6/d3-legend.min.js"></script>
+
 
 <script>
 
@@ -347,7 +348,7 @@ async function byCriteria() {
 		.attr("class", "legendLinear")
 		.attr("transform", "translate(800,500)");
 		
-	var legendLinear = d3.legend.color()
+	var legendLinear = d3.legendColor()
 		.shapeWidth(30)
 		.orient('horizontal')
 		.scale(c);
