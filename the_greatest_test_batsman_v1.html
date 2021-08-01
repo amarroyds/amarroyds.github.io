@@ -359,24 +359,25 @@ async function byCriteria() {
 	   .call(legendLinear);
 	
 	//Add legend for Radius i.e. Avg
-	/*
+	
 	svg.append("g")
 	   .attr("class", "legendSize")
-       .attr("transform", "translate(700, 350)");
+       .attr("transform", "translate(700, 300)");
     
 	var legendSize = d3.legendSize()
 		.scale(r)
 		.shape('circle')
-		.shapePadding(15)
-		.labelOffset(20)
-		.orient('horizontal')
+		.shapePadding(5)
+		.labelOffset(10)
+		.orient('vertical')
 		.title("Average")
         .titleWidth(100);
 
 	svg.select(".legendSize")
 		.call(legendSize);
          
-	*/
+	
+	
    svg.selectAll('circle')
    .data(data)
    .enter()
