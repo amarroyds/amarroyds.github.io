@@ -343,7 +343,7 @@ async function byCriteria() {
 	.append("g")
 	.call(makeAnnotations)
 	
-	//Add legend for color and shape
+	//Add legend for color i.e. Conversion %
 	svg.append("g")
 		.attr("class", "legendLinear")
 		.attr("transform", "translate(750,450)");
@@ -357,7 +357,22 @@ async function byCriteria() {
 
 	svg.select(".legendLinear")
 	   .call(legendLinear);
-          
+	
+	//Add legend for Radius i.e. Avg
+	svg.append("g")
+	   .attr("class", "legendSize")
+       .attr("transform", "translate(750, 400)");
+    
+	var legendSize = d3.legendSize()
+		.scale(r)
+		.shape('circle')
+		.shapePadding(15)
+		.labelOffset(20)
+		.orient('horizontal');
+
+	svg.select(".legendSize")
+		.call(legendSize);
+         
 
    svg.selectAll('circle')
    .data(data)
