@@ -29,7 +29,7 @@
 		.my-menu {
 			/*Sets all the content of dropdown div to center*/
             text-align: center; 
-			width:250px;
+			width:300px;
 			height:35px;
 			cursor: pointer;
 			z-index: 1;
@@ -275,7 +275,7 @@ async function byCriteria() {
 
    var mousemove = function(d) {
     tooltip
-      .html(d.Player + " Runs: " + d.Runs + " Hundreds: " + d.Hundred + " Avg: " + d.Avg + " Conversion %: " + d.conversion_pct)
+      .html("<b>" + d.Player +"</b>"+ "  Runs: " + d.Runs + "  Hundreds: " + d.Hundred + "  Avg: " + d.Avg + "  Conversion %: " + d.conversion_pct)
       .style("left", (d3.mouse(this)[0]) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
       .style("top", (d3.mouse(this)[1]) + "px");
 	
