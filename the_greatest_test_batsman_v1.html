@@ -25,6 +25,11 @@
         .label {
             font-size: 13px;
         }
+		
+		.my-menu {
+			/*Sets all the content of dropdown div to center*/
+            text-align: center; 
+        }
 
 </style>
 
@@ -40,8 +45,7 @@
 	<a href="https://archive.ph/20070110222511/http://www.cricinfo.com/ci/content/story/113623.html">rating</a>.
 	Which later updated. The updated data for top five batsman is available below.
 	(<a href="https://en.wikipedia.org/wiki/Wisden_100#cite_note-8">reference</a>)
-	</p>
-    <h2> It depends on the criteria you apply...</h2>    
+	</p>  
 </div>
 <div>
 <h2> Wisden Ranking </h2> 
@@ -93,6 +97,21 @@
 		
 
 </script>
+<div>
+	<p>However, not all agree to Wisden ranking. Test cricket has eveoved over time
+	   and become more competative when Donald Bradman used to play cricket.In their opinion
+	   Sachin Tendulkar is all time great.Often, the choice of the greatest batsman is
+	   driven by emotions and  with very limited data.</p>
+	   
+	<p>So, below is a tool for the fans to explore on their own and support their argument
+	with data. In this top 100 batman's batting performance can be compared using aggregate statistics 
+	such as runs and hundreds. There are other noramlize staistics such as batting average
+	and conversion percentage i.e. what percentage of 50+ score converted in a hundred can be 
+	used to remove the variability of time and opponents they have played against.</p>
+	
+	<p> As you will add the parameters progressively you will definitly see 
+	a different perspective driven by data</p>
+</div>
 
 </div>
 
@@ -104,7 +123,7 @@
 </div>-->
 
 <!-- Initialize a select button -->
-<div>
+<div class="dropdown my-menu">
 	<select id="selectButton"></select>
 </div>
 
@@ -118,7 +137,7 @@
 async function byCriteria() {
 
  //default value of criteria onload(); will asume value on button onclick()
- var selectedCriteria = "byHundredRun"
+ var selectedCriteria = "by Hundreds & Runs"
  
  // set the dimensions and margins of the graph
  var margin = {top: 25, right: 25, bottom: 25, left: 50},
@@ -135,7 +154,7 @@ async function byCriteria() {
  var r = d3.scaleLinear().domain([20,100]).range([0,25]);  //Average scale - radius of the bubble
 
  var bubbleRadius = function(criteria,d) {
-		if (criteria == "byHundredRun") {
+		if (criteria == "by Hundreds & Runs") {
 			//return r(40);
 			return 5;
 		} else { 
@@ -144,7 +163,7 @@ async function byCriteria() {
  
     }
   var bubbleColor = function(criteria,d) {
-		if (criteria == "byAll") {
+		if (criteria == "by Hundreds,Runs,Avg & Conversion pct") {
 			return c(d);
 		} else {
 			return d3.color("plum");
@@ -170,7 +189,7 @@ async function byCriteria() {
   //console.log(data);
 
   // List of groups (here I have one group per column)
-  var allGroup = ["byHundredRun", "byHundredRunAvg", "byAll"]
+  var allGroup = ["by Hundreds & Runs", "by Hundreds,Runs & Avg", "by Hundreds,Runs,Avg & Conversion pct"]
   
   // add the options to the button
   d3.select("#selectButton")
@@ -248,7 +267,7 @@ async function byCriteria() {
       // Create new data with the selection?
       //var dataFilter = data.map(function(d){return {time: d.time, value:d[selectedGroup]} })
 	  
-	  console.log(selectedCriteria);
+	  //console.log(selectedCriteria);
 
       // Redraw the circles based on the selected criteria i.e. button values
 	  svg.selectAll('circle')
@@ -269,7 +288,7 @@ async function byCriteria() {
         // recover the option that has been chosen
         var selectedOption = d3.select(this).property("value");
 		
-		console.log(selectedOption);
+		//console.log(selectedOption);
 		
         // run the updateChart function with this selected option
         update(selectedOption);
