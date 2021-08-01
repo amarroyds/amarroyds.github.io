@@ -351,7 +351,11 @@ async function byCriteria() {
 	var legendLinear = d3.legendColor()
 		.shapeWidth(30)
 		.orient('horizontal')
-		.scale(c);
+		.scale(c)
+		.labelFormat(d3.format(".2f"))
+        .useClass(true)
+        .title("Conversion %")
+        .titleWidth(50)
 
 	svg.select(".legendLinear")
 	   .call(legendLinear);
