@@ -231,7 +231,16 @@ async function byCriteria() {
             "translate(" + (width/2) + " ," + 
                            (height + 30) + ")")
       .style("text-anchor", "middle")
-      .text("Runs");
+      .text("Total runs scored");
+	  
+    // text label for the y axis
+	svg.append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 0 - margin.left)
+      .attr("x",0 - (height / 2))
+      .style("text-anchor", "middle")
+      .text("# of Hundres scored");  
+
 	
    // Add a tooltip div. Here I define the general feature of the tooltip: stuff that do not depend on the data point.
    // Its opacity is set to 0: we don't see it by default.
