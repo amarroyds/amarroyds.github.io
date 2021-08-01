@@ -361,14 +361,16 @@ async function byCriteria() {
 	//Add legend for Radius i.e. Avg
 	svg.append("g")
 	   .attr("class", "legendSize")
-       .attr("transform", "translate(750, 400)");
+       .attr("transform", "translate(750, 375)");
     
 	var legendSize = d3.legendSize()
 		.scale(r)
 		.shape('circle')
 		.shapePadding(15)
 		.labelOffset(20)
-		.orient('horizontal');
+		.orient('horizontal')
+		.title("Average")
+        .titleWidth(100);
 
 	svg.select(".legendSize")
 		.call(legendSize);
