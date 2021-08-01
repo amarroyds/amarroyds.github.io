@@ -359,6 +359,15 @@ async function byCriteria() {
 	   .call(legendLinear);
 	
 	//Add legend for Radius i.e. Avg
+	
+	// Handmade legend
+	svg.append("circle").attr("cx",700).attr("cy",300).attr("r", 25).style("fill", "d3.color("plum")")
+	svg.append("circle").attr("cx",700).attr("cy",345).attr("r", 9.3).style("fill", "#d3.color("plum")")
+	svg.append("circle").attr("cx",700).attr("cy",368).attr("r", 3.1).style("fill", "#d3.color("plum")")
+	svg.append("text").attr("x", 735).attr("y", 300).text("Avg - 100").style("font-size", "15px").attr("alignment-baseline","middle")
+	svg.append("text").attr("x", 735).attr("y", 345).text("Avg - 50").style("font-size", "15px").attr("alignment-baseline","middle")
+	svg.append("text").attr("x", 735).attr("y", 368).text("Avg - 30").style("font-size", "15px").attr("alignment-baseline","middle")
+	
 	/*
 	svg.append("g")
 	   .attr("class", "legendSize")
