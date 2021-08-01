@@ -224,6 +224,8 @@ async function byCriteria() {
    svg.append("g")
 	.attr("transform","translate(0,"+height+")")
 	.call(d3.axisBottom(x).tickValues([5000,7500,10000,12500,15000]).tickFormat(d3.format("~s")));
+	.append("text")
+     .text("Runs");
 	
    // Add a tooltip div. Here I define the general feature of the tooltip: stuff that do not depend on the data point.
    // Its opacity is set to 0: we don't see it by default.
