@@ -346,7 +346,7 @@ async function byCriteria() {
 	//Add legend for color i.e. Conversion %
 	svg.append("g")
 		.attr("class", "legendLinear")
-		.attr("transform", "translate(750,450)");
+		.attr("transform", "translate(700,450)");
 		
 	var legendLinear = d3.legendColor()
 		.shapeWidth(30)
@@ -361,7 +361,7 @@ async function byCriteria() {
 	//Add legend for Radius i.e. Avg
 	svg.append("g")
 	   .attr("class", "legendSize")
-       .attr("transform", "translate(750, 375)");
+       .attr("transform", "translate(700, 350)");
     
 	var legendSize = d3.legendSize()
 		.scale(r)
