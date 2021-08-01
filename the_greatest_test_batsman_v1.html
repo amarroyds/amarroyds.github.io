@@ -140,8 +140,9 @@
 <div id="my_chart"></div>
 
 <!--<svg width=960 height=600></svg>-->
-<!-- Load d3-annotation -->
+<!-- Load d3-annotation & legend; Credit: www.susielu.com-->
 <script src="https://rawgit.com/susielu/d3-annotation/master/d3-annotation.min.js"></script>
+<script src="https://cdnjs.com/libraries/d3-legend"></script>
 
 <script>
 
@@ -163,6 +164,7 @@ async function byCriteria() {
  //var c = d3.scaleLinear().domain([20,60,100]).range(["red","white","green"]); 
  var c = d3.scaleSequential().domain([9,70]).interpolator(d3.interpolatePuRd);//Conversion scale - color of the bubble
  var r = d3.scaleLinear().domain([20,100]).range([0,25]);  //Average scale - radius of the bubble
+
 
  var bubbleRadius = function(criteria,d) {
 		if (criteria == "by Hundreds & Runs") {
@@ -338,6 +340,20 @@ async function byCriteria() {
 	d3.select("#icc_scatter")
 	.append("g")
 	.call(makeAnnotations)
+	
+	//Add legend for color and shape
+	svg.append("g")
+		.attr("class", "legendLinear")
+		.attr("transform", "translate(800,500)");
+		
+	var legendLinear = d3.legendColor()
+		.shapeWidth(30)
+		.orient('horizontal')
+		.scale(c);
+
+	svg.select(".legendLinear")
+	   .call(legendLinear);
+          
 
    svg.selectAll('circle')
    .data(data)
@@ -347,16 +363,13 @@ async function byCriteria() {
       .attr('cy', function (d,i) { return y(d.Hundred);})
       .attr('r', function(d,i) {return bubbleRadius(selectedCriteria,d.Avg);})
 	  .style("fill", function(d,i) {return bubbleColor(selectedCriteria,d.conversion_pct);})
-	//.append("text")
-    //.attr("dx", 12)
-    //.attr("dy", ".35em")
-    //.text(function(d) { return d.Player });
 	.on("mouseover", mouseover )
     .on("mousemove", mousemove )
     .on("mouseleave", mouseleave );
 
    
-   
+
+
    // A function that update the chart
     function update(selectedCriteria) {
 
