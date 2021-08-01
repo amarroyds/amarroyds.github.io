@@ -371,13 +371,13 @@ async function byCriteria() {
 	
 	svg.append("g")
 	   .attr("class", "legendSize")
-       .attr("transform", "translate(600, 450)");
+       .attr("transform", "translate(500, 500)");
     
 	var legendSize = d3.legendSize()
 		.scale(r)
 		.shape('circle')
-		.shapePadding(5)
-		.labelOffset(10)
+		.shapePadding(15)
+		.labelOffset(20)
 		.orient('vertical')
 		.title("Average")
         .titleWidth(100);
