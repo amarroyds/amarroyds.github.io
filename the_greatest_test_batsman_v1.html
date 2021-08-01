@@ -244,7 +244,7 @@ async function byCriteria() {
 	
    // Add a tooltip div. Here I define the general feature of the tooltip: stuff that do not depend on the data point.
    // Its opacity is set to 0: we don't see it by default.
-   var tooltip = d3.select("#my_dataviz")
+   /*var tooltip = d3.select("#my_dataviz")
     .append("div")
     .style("opacity", 0)
     .attr("class", "tooltip")
@@ -275,7 +275,27 @@ async function byCriteria() {
       .transition()
       .duration(200)
       .style("opacity", 0)
-   }
+   }*/
+   
+   var tooltip = d3.select('.tooltip-area')
+        .style('opacity', 0);
+
+   const mouseover = (event, d) => {
+        tooltip.style("opacity", 1);
+      };
+
+   const mouseleave = (event, d) => {
+        // tooltip.style('opacity', 0);
+      }
+
+   const mousemove = (event, d) => {
+        const text = d3.select('.tooltip-area__text');
+        text.text(`Player is ${d.Player}`);
+        const [x, y] = d3.pointer(event);
+
+        tooltip
+          .attr('transform', `translate(${x}, ${y})`);
+    };
 
    svg.selectAll('circle')
    .data(data)
@@ -308,8 +328,8 @@ async function byCriteria() {
 			.attr('cy', function (d,i) { return y(d.Hundred);})
             .attr('r', function(d,i) {return bubbleRadius(selectedCriteria,d.Avg);})
 			.style("fill", function(d,i) {return bubbleColor(selectedCriteria,d.conversion_pct);})
-			.append('title') //possible way of implementing tooltip
-            .text((d) => `Player: ${d.Player}`);
+		.append('title') //possible way of implementing tooltip
+        .text((d) => `Player: ${d.Player}`);
 
     }
 	
