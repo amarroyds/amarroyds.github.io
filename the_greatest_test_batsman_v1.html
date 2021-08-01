@@ -307,7 +307,9 @@ async function byCriteria() {
 			.attr('cx', function (d,i) { return x(d.Runs); })
 			.attr('cy', function (d,i) { return y(d.Hundred);})
             .attr('r', function(d,i) {return bubbleRadius(selectedCriteria,d.Avg);})
-			.style("fill", function(d,i) {return bubbleColor(selectedCriteria,d.conversion_pct);});
+			.style("fill", function(d,i) {return bubbleColor(selectedCriteria,d.conversion_pct);})
+			.append('title') //possible way of implementing tooltip
+            .text((d) => `Player: ${d.Player}`);
 
     }
 	
