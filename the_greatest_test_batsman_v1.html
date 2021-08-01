@@ -352,10 +352,8 @@ async function byCriteria() {
 		.shapeWidth(30)
 		.orient('horizontal')
 		.scale(c)
-		.labelFormat(d3.format(".2f"))
-        .useClass(true)
         .title("Conversion %")
-        .titleWidth(50)
+        .titleWidth(60)
 
 	svg.select(".legendLinear")
 	   .call(legendLinear);
