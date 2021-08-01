@@ -47,7 +47,7 @@
 	(<a href="https://en.wikipedia.org/wiki/Wisden_100#cite_note-8">reference</a>)
 	</p>  
 </div>
-<div>
+<div id="wisden_ranking">
 <h2> Wisden Ranking </h2> 
 <script>
 	var columns = [
@@ -68,7 +68,7 @@
 	/*const data = await d3.csv(
 		'https://amarroyds.github.io/Wisden_ranking.csv');*/
 
-	var table = d3.select("body").append('table');
+	var table = d3.select("#wisden_ranking").append('table');
 	var thead = table.append('thead');
 
 	thead.append('tr')
@@ -97,21 +97,6 @@
 		
 
 </script>
-<div>
-	<p>However, not all agree to Wisden ranking. Test cricket has eveoved over time
-	   and become more competative when Donald Bradman used to play cricket.In their opinion
-	   Sachin Tendulkar is all time great.Often, the choice of the greatest batsman is
-	   driven by emotions and  with very limited data.</p>
-	   
-	<p>So, below is a tool for the fans to explore on their own and support their argument
-	with data. In this top 100 batman's batting performance can be compared using aggregate statistics 
-	such as runs and hundreds. There are other noramlize staistics such as batting average
-	and conversion percentage i.e. what percentage of 50+ score converted in a hundred can be 
-	used to remove the variability of time and opponents they have played against.</p>
-	
-	<p> As you will add the parameters progressively you will definitly see 
-	a different perspective driven by data</p>
-</div>
 
 </div>
 
@@ -121,6 +106,22 @@
 	<button value = "byHundredRunAvg" onclick="byAvgRunsHundreds()">By avg, runs & hundreds scored</button> 
 	<button value = "byAll" onclick="byAll()">By conversion, avg, runs & hundreds scored</button> 
 </div>-->
+
+<div>
+		<p>However, not all agree to Wisden ranking. Test cricket has eveoved over time
+		and become more competative when Donald Bradman used to play cricket.In their opinion
+		Sachin Tendulkar is all time great.Often, the choice of the greatest batsman is
+		driven by emotions and  with very limited data.</p>
+	   
+		<p>So, below is a tool for the fans to explore on their own and support their argument
+		with data. In this top 100 batman's batting performance can be compared using aggregate statistics 
+		such as runs and hundreds. There are other noramlize staistics such as batting average
+		and conversion percentage i.e. what percentage of 50+ score converted in a hundred can be 
+		used to remove the variability of time and opponents they have played against.</p>
+	
+		<p> As you will add the parameters progressively you will definitly see 
+		a different perspective driven by data</p>
+</div>
 
 <!-- Initialize a select button -->
 <div class="dropdown my-menu">
