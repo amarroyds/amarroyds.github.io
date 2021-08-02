@@ -141,7 +141,7 @@
 </div>
 
 <!-- Create a div where the graph will take place -->
-<div id="my_chart" display = "inline"></div>
+<div id="my_chart"></div>
 
 <!--<svg width=960 height=600></svg>-->
 <!-- Load d3-annotation & legend; Credit: www.susielu.com-->
@@ -276,9 +276,11 @@ async function byCriteria() {
 
    var mousemove = function(d) {
     tooltip
-	  .html("Player: " + d.Player + "  Runs: " + d.Runs + "  Hundreds: " + d.Hundred + "  Avg: " + d.Avg + "  Conversion %: " + d.conversion_pct)
+	  .html("hello")
 	  .style("left", (d3.mouse(this)[0]) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
       .style("top", (d3.mouse(this)[1]) + "px");
+	  
+	//	  .html("Player: " + d.Player + "  Runs: " + d.Runs + "  Hundreds: " + d.Hundred + "  Avg: " + d.Avg + "  Conversion %: " + d.conversion_pct)
 	
 	console.log(d3.mouse(this)[0]);
 	console.log(d3.mouse(this)[1]);
