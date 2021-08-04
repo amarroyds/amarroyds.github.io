@@ -263,13 +263,11 @@ async function byCriteria() {
     .append("div")
     .style("opacity", 0)
     .attr("class", "tooltip")
-	//.style("position", "absolute")
     .style("background-color", "lightgray")
     .style("border", "solid")
     .style("border-width", "1px")
     .style("border-radius", "5px")
-    .style("padding", "10px")
-	.attr("position","absolute"); //style
+    .style("padding", "10px"); //style
    
    // A function that change this tooltip when the user hover a point.
    // Its opacity is set to 1: we can now see it. Plus it set the text and position of tooltip depending on the datapoint (d)
